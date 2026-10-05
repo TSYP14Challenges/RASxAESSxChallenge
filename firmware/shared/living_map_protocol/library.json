@@ -1,0 +1,7 @@
+{
+  "name": "living_map_protocol",
+  "version": "0.1.0",
+  "description": "Living Map radio frame constants and checksum/validity helpers (header-only)",
+  "frameworks": "*",
+  "platforms": "*"
+}
