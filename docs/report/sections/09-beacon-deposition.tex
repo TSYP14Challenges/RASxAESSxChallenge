@@ -1,0 +1,35 @@
+% Owner: Kais
+\section{Beacon Deposition Decision}
+
+Beacons do two jobs: they mark where an event is, and they keep the chain of
+radio links back to the PEB unbroken, so that every event reaches the Command
+Post and an Executor can follow the chain. The Writer therefore drops a
+beacon in two cases.
+
+\paragraph{1. An event is detected.} The Writer stops at the event and drops
+an \emph{event beacon} there (gas, fire, victim alive or dead), with the
+severity and the path from its previous beacon. The beacon sits at the spot
+the Executor must reach, so the last primitive of the path leads it exactly
+there.
+
+\paragraph{2. The Writer is about to lose the mesh.} The Writer runs an
+ESP32, whose ESP-NOW receive callback reports the signal strength (RSSI) of
+every frame. While exploring, it keeps hearing the 3\,s rebroadcasts of the
+beacons behind it. When the strongest of them falls below a threshold
+(about $-80$\,dBm \todo{calibrate}), it drops a \emph{connectivity beacon}
+(event type \texttt{0x00}). The threshold sits above the level where ESP-NOW
+stops working (around $-90$\,dBm), so the new beacon still has a reliable
+link to the previous one. This uses beacons only where the building actually
+weakens the signal (walls, corners, long corridors), instead of at a fixed
+spacing that would waste them in open areas.
+
+\paragraph{Loading and dropping.} Before a drop, the Writer sends the frame
+by ESP-NOW unicast to the next beacon in its magazine. The beacon stores it
+in non-volatile memory, turns its LED on and starts broadcasting; the
+mechanism then releases it (Section~\ref{sec:mechanics}). The Writer moves on
+without waiting for a confirmation; a beacon that fails is detected later by
+the Command Post (Section~\ref{sec:failure-cases}).
+
+\paragraph{Beacon budget.} A Writer carries $K$ beacons \todo{K, set by the
+magazine}. When only 2 remain, it keeps them for events, stops exploring new
+branches, and returns to the PEB to reload.

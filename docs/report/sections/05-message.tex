@@ -1,0 +1,78 @@
+% Owner: Kais
+\section{Message}\label{sec:message}
+
+A beacon message must say \emph{what} was found, \emph{where} to go and
+\emph{when} it was written, in a frame small enough for one ESP-NOW packet
+(250 bytes). Fields are big-endian, and every frame ends with a checksum, the
+XOR of all preceding bytes.
+
+\paragraph{Identifier.} Every node that writes frames has a unique 1-byte
+ID: \texttt{0x00} for the Command Post, \texttt{0x01}--\texttt{0x7F} for
+Writers, \texttt{0x80}--\texttt{0xFE} for Executors. A frame is identified by
+(frame type, \texttt{origin\_id}, \texttt{msg\_id}), where \texttt{msg\_id} is
+a counter unique per origin. This tells which Writer composed each message,
+and supports any number of robots. A beacon has no ID of its own: it is named
+by the identifier of the frame it stores.
+
+\paragraph{Event frame.} A Writer composes an EVENT\_BEACON frame and stores
+it in the beacon it drops (Table~\ref{tab:event-frame}). It is $14 + 2N$
+bytes long, where $N$ is the number of movement primitives (at most 118).
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l l l X@{}}
+\toprule
+Byte & Field & Size & Content \\
+\midrule
+0 & frame\_type & 1 & \texttt{0x01} \\
+1 & origin\_id & 1 & Writer that composed it \\
+2--3 & msg\_id & 2 & counter, unique per Writer \\
+4 & ttl & 1 & hops left; decremented by each relay \\
+5 & seq\_num & 1 & drop order in this Writer's run \\
+6--9 & timestamp & 4 & seconds since this Writer's GO\_TRIGGER \\
+10 & event\_type & 1 & \texttt{0x00} none (connectivity beacon), \texttt{0x01}
+  gas, \texttt{0x02} fire, \texttt{0x03} victim alive, \texttt{0x04} victim
+  dead, \texttt{0x05} robot down \\
+11 & event\_value & 1 & severity, 0--255 \\
+12 & primitive\_count & 1 & $N$ \\
+13.. & primitives & $2N$ & path from the previous beacon: FORWARD (cm) or
+  TURN (signed degrees) \\
+last & checksum & 1 & XOR of all preceding bytes \\
+\bottomrule
+\end{tabularx}
+\caption{EVENT\_BEACON frame.}
+\label{tab:event-frame}
+\end{table}
+
+\paragraph{Where.} The primitives describe the path from the Writer's
+previous beacon (from PEB-Inside for the first one). An Executor reaches an
+event by following the beacons in drop order, and the Command Post rebuilds
+every position by chaining these paths back to the entrance. Relative paths
+keep frames short: their size depends on the distance between two beacons,
+not on the distance from the entrance.
+
+\paragraph{When, and message aging.} Messages age in three ways:
+\begin{itemize}
+  \item \textbf{Event age.} The timestamp counts seconds from the Writer's
+    GO\_TRIGGER. The Command Post knows when it sent that order, so it turns
+    every timestamp into real time and shows on the map how old each event is.
+  \item \textbf{Hop limit.} Each relay decrements \texttt{ttl}, and a frame
+    reaching 0 is no longer relayed, so no frame circulates forever.
+  \item \textbf{Forgetting.} A beacon drops a frame it has already seen, but
+    forgets it after 60\,s. Each frame is thus re-flooded about once a minute,
+    and a node that arrives later, such as an Executor, still receives it.
+\end{itemize}
+
+\paragraph{Other frames.} Both start with the same first 5 bytes (type,
+origin, \texttt{msg\_id}, \texttt{ttl}) and end with a checksum:
+\begin{itemize}
+  \item \textbf{GO\_TRIGGER} (8 bytes), from the Command Post: a
+    \texttt{target\_id} (one robot, or all) and a \texttt{mission\_code}:
+    explore or repair for a Writer, or the event type a robot must solve. Once the
+    Executor is inside, PEB-Inside briefs it by replaying the stored event
+    frames of that type, in drop order.
+  \item \textbf{STATUS\_UPDATE} (8 bytes), from a beacon or a robot about
+    itself: a status code (beacon low battery, or robot heartbeat) and its
+    battery level (Section~\ref{sec:failure-cases}).
+\end{itemize}

@@ -1,0 +1,44 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage[hidelinks]{hyperref}
+
+\setlist{nosep}
+\graphicspath{{figures/}}
+
+% Placeholder for anything still to be decided or written. Search for
+% "\todo" before submitting: none may be left in the final PDF.
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{The Living Map: Spatial Memory for Emergency Robots\\[2pt]
+  \large TSYP14 Technical Challenge --- IEEE RAS $\times$ AESS Tunisia}
+\author{\todo{team name and members}}
+\date{}
+
+\begin{document}
+\maketitle
+
+% One file per section, so each owner edits only their own file.
+\input{sections/01-introduction}      % Bacha
+\input{sections/02-process}           % Ahmed
+\input{sections/03-simulation}        % Ahmed
+\input{sections/04-network}           % Kais
+\input{sections/05-message}           % Kais
+\input{sections/06-robots-hardware}   % Bacha, Hachicha
+\input{sections/07-navigation}        % Hachicha, Bacha
+\input{sections/08-frame-translation} % Bacha
+\input{sections/09-beacon-deposition} % Kais
+\input{sections/10-mechanics}         % Bacha
+\input{sections/11-failure-cases}     % Kais
+\input{sections/12-implementation}    % Bacha
+\input{sections/13-conclusion}        % Ahmed
+
+\end{document}

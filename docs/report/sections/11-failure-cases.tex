@@ -1,0 +1,57 @@
+% Owner: Kais
+\section{Failure Cases}\label{sec:failure-cases}
+
+The system is designed so that no single failure loses what was learned:
+every event is stored in a beacon inside the zone, in PEB-Inside, and at the
+Command Post. Table~\ref{tab:failures} lists how each failure is detected and
+repaired. Repairs use two missions of the GO\_TRIGGER: \emph{repair}, which
+sends a Writer to replace beacons, and \emph{take over}, which sends a robot
+of the same type to continue the work of a robot that is down. In both cases
+PEB-Inside briefs the robot with the stored frames it needs.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}p{2.2cm} X X@{}}
+\toprule
+Failure & Detection & Solution \\
+\midrule
+Robot battery dies
+  & Every robot broadcasts a heartbeat with its battery level every 10\,s.
+    At a critical level, the robot stops and broadcasts a \emph{robot down}
+    frame with its position (path from its last beacon).
+  & The robot spends its remaining energy as a beacon, relaying mesh
+    traffic. Its knowledge is already in the beacons it dropped. The Command
+    Post sends another robot of the same type to take over: a Writer resumes
+    exploring from where the first one stopped, an Executor's mission is
+    reassigned. \\
+\addlinespace
+Beacon battery dies
+  & The beacon measures its battery; when low, its LED blinks and it
+    broadcasts a low-battery status.
+  & The Command Post sends a Writer on a repair mission. It drops a new
+    beacon next to the old one and loads it with an exact copy of the old
+    frame (same identifier), so nothing changes for the map or the
+    Executors. \\
+\addlinespace
+Beacon destroyed
+  & Each beacon's frame reaches the Command Post about once a minute (60\,s
+    re-flood). No copy for 3 minutes means the beacon is lost. If a whole
+    branch goes silent, the broken link is its silent beacon closest to the
+    entrance.
+  & Repair mission as above, the frame copied from PEB-Inside's store. An
+    Executor already on its way keeps going: its brief holds the paths
+    between beacons, so it can cross the gap by dead reckoning. \\
+\addlinespace
+PEB destroyed
+  & PEB-Outside holds an MQTT connection to the broker, which publishes its
+    \emph{last will} message the moment it drops off: the Command Post is
+    alerted at once.
+  & A Writer installs a spare PEB pair, at the same or another entrance.
+    No data is lost: the beacons keep rebroadcasting, so the new PEB-Inside
+    rebuilds its store within about a minute. \\
+\bottomrule
+\end{tabularx}
+\caption{Failure cases, how they are detected, and how they are solved.}
+\label{tab:failures}
+\end{table}

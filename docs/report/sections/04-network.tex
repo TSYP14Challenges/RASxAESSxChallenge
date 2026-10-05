@@ -1,0 +1,115 @@
+% Owner: Kais
+\section{Network}
+
+\subsection{Topology}
+
+The network has three tiers (Fig.~\ref{fig:topology}). Inside the
+disconnected zone, beacons dropped by the Writers form an ESP-NOW broadcast
+mesh, and every robot is a node of that mesh. At each entrance, a pair of
+wired \emph{Paired Entry Beacons} (PEB) bridges the mesh to the outside.
+Outside, the PEB reaches the Command Post over 4G. No robot ever talks to the
+Command Post directly: every frame passes through a PEB pair.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{network-topology}
+\caption{Network topology for one entrance.}
+\label{fig:topology}
+\end{figure}
+
+\paragraph{Set-up.} Before any other task, and before taking instructions
+from the Command Post, a Writer installs the infrastructure of its entrance:
+PEB-Outside outside, PEB-Inside just past the entrance, joined by a
+1--1.5\,m cable. Only then does it receive its GO\_TRIGGER and start exploring.
+
+\paragraph{Data flow.} Events travel \emph{up}: Writer $\rightarrow$ beacon
+mesh $\rightarrow$ PEB-Inside $\rightarrow$ cable $\rightarrow$ PEB-Outside
+$\rightarrow$ 4G $\rightarrow$ Command Post. Orders travel \emph{down} the same
+path. The operator chooses an Executor and sends a GO\_TRIGGER, which
+PEB-Outside broadcasts over ESP-NOW to the robots waiting outside. The
+briefing is split between the two halves because a briefing must happen at a
+beacon: PEB-Outside only tells the Executor to \emph{enter}, and PEB-Inside
+gives it the event details and its mission once it is inside.
+
+\paragraph{Any number of robots and entrances.} Every robot has a unique
+1-byte ID, so a GO\_TRIGGER can name its target Executor and every frame names
+its Writer (Section~\ref{sec:message}). Each entrance has its own PEB pair. If
+two meshes meet inside, a frame can leave through both pairs; the Command Post
+keeps one copy per frame identifier.
+
+\subsection{Network Communication: ESP-NOW}
+
+All nodes inside the zone (beacons, PEBs, robots) use ESP-NOW, Espressif's
+connectionless protocol on the 2.4\,GHz Wi-Fi radio:
+\begin{itemize}
+  \item \textbf{No infrastructure.} There is no access point, router or
+    association; a node broadcasts and every node in range hears it. This
+    suits a mesh whose nodes appear one by one as beacons are dropped, and
+    disappear when they fail.
+  \item \textbf{Fits our frames.} The 250-byte payload limit holds an event
+    frame with up to 118 movement primitives ($14 + 2N$ bytes).
+  \item \textbf{Low latency and low power.} A frame is sent in milliseconds,
+    without a connection handshake.
+  \item \textbf{One cheap chip.} The radio is built into the ESP8266/ESP32
+    that each node needs anyway. Wi-Fi would need an access point, BLE has a
+    shorter range, and LoRa needs an extra module and has a far lower data
+    rate.
+\end{itemize}
+Beacons relay frames by flooding: a beacon drops a frame whose checksum is
+wrong or whose \texttt{msg\_id} it has already seen, and decrements a hop
+counter (TTL) before relaying. We validated relay, deduplication and TTL on a
+bench of 3 ESP8266 nodes: every check passed with no send failure. Range has
+not been measured yet. \todo{indoor range test}
+
+\subsection{Paired Entry Beacons (PEB)}
+
+The PEB is split into two halves, each built on the beacon hardware below with
+its own battery, and joined by a cable carrying a UART link (TX, RX, GND,
+115\,200\,baud). At 1--1.5\,m a plain UART is reliable; if the cable gets
+longer or picks up motor noise, two RS-485 transceivers (about \$1 each) make
+it robust over hundreds of metres. The same frames cross the cable as over the
+air, each preceded by a start byte and a length byte.
+\begin{itemize}
+  \item \textbf{PEB-Inside} is a normal mesh beacon that also stores every
+    event frame it receives, to brief Executors as they enter.
+  \item \textbf{PEB-Outside} converts between the cable, ESP-NOW (to the
+    robots waiting outside) and a 4G/LTE module with built-in GNSS
+    \todo{module model}. The modem draws current peaks of about 2\,A, so it
+    runs on a larger pack (2 $\times$ 18650).
+\end{itemize}
+PEB-Outside needs two serial ports, one for the cable and one for the modem.
+The ESP8266 has only one full UART, so one link must use a software UART;
+the ESP32 has three, which is one reason we plan to move to it.
+
+\subsection{Beacons}
+
+\begin{itemize}
+  \item \textbf{Controller:} ESP8266 (ESP-NOW), moving to ESP32.
+  \item \textbf{Power:} one 18650 Li-ion cell \todo{capacity}, its voltage
+    read through a divider on the ADC.
+  \item \textbf{Status LED:} off while the beacon is still carried by the
+    Writer (not ready), steady on while broadcasting, blinking when the
+    battery is low.
+  \item \textbf{Enclosure:} 3D-printed (Section~\ref{sec:mechanics}).
+\end{itemize}
+A beacon keeps its frame in non-volatile memory, so it survives a reset, and
+rebroadcasts it every 3\,s.
+
+\subsection{Outside Network Area}
+
+The Outside Network Area is made of PEB-Outside, a free cloud MQTT broker
+and the Command Post. Over 4G, PEB-Outside sits behind the carrier's NAT and
+cannot accept incoming connections, and neither can the Command Post laptop.
+Both therefore connect \emph{out} to the broker:
+\begin{itemize}
+  \item PEB-Outside publishes incoming frames and its GNSS fix, and
+    subscribes to GO\_TRIGGERs.
+  \item The Command Post does the reverse.
+\end{itemize}
+Each entrance has its own topic (\texttt{livingmap/<entrance>/up},
+\texttt{/down}, \texttt{/gps}), so adding an entrance needs no change at the
+Command Post. The GNSS fix anchors the map of each entrance to real-world
+coordinates (Section~\ref{sec:frame-translation}). The Command Post is a
+laptop running our fork of the RoidOME terminal monitor, which already decodes
+our frames live; reading from MQTT instead of a serial bridge is planned
+for the next phase.
