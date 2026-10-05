@@ -1,0 +1,32 @@
+Factory Environment Simulation — source and asset notices
+
+The repository preserves the existing Apache-2.0 and BSD-3-Clause license
+declarations. Full license texts and the Gazebo asset copyright notice are in
+licenses/. Third-party notices remain applicable to adapted assets.
+
+Warehouse geometry and textures
+Source: https://github.com/wh200720041/warehouse_simulation_toolkit
+Source commit: 18df8ce6dde61711e0705f3bd872465a01bd01a2
+License: BSD-3-Clause; see licenses/WAREHOUSE-BSD-3-Clause.txt.
+Warehouse geometry was converted into local scene meshes with its associated
+textures. Original saved-state transforms were applied. Gazebo Classic material,
+GUI and plugin settings were adapted for Gazebo Harmonic. The original unused
+workcell model bundles are not included in this final distribution; the scene's
+referenced geometry and texture files are retained.
+
+Victim mesh
+Source: Gazebo Classic walk.dae, Open Source Robotics Foundation.
+Source URL: https://raw.githubusercontent.com/gazebosim/gazebo-classic/b22c6e15e52299865b31093b8feebc9ca19e26e8/media/models/walk.dae
+Source commit: b22c6e15e52299865b31093b8feebc9ca19e26e8
+Original asset SHA256: 49af0df3a319d1cb8ca2cebf02dbd00f625e5d5bec820bc5e109925b18b65c6e
+License: Apache-2.0; see licenses/GAZEBO-ACTOR-NOTICE.txt and
+licenses/APACHE-2.0.txt.
+The asset was baked into the stationary lying-victim mesh
+models/factory_scene_assets/meshes/victim_supine.dae. Its original animation
+bundle is not needed to render that baked mesh.
+
+Simulation additions
+The primitive robots, routes, fires, particle textures, beacon network and
+mission controllers extend the adapted warehouse scene. The existing Step 1
+software and primitive robot were distributed under Apache-2.0. The final
+packaging retains all applicable source notices and license texts.
