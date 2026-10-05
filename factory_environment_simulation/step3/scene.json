@@ -1,0 +1,32 @@
+{
+  "source_step2_world_sha256": "c6f7b72dca4d5cba6c98986b26dfd5db7b353f30f9c3bb21735c665cfdc43c16",
+  "config_sha256": "e036bb8e27b60192bc27620244de4b33908b9307709735c8b677c977a1ab1df6",
+  "world_sha256": "bd3752d561d78d596c1be8369a8b3d5dca37c1686e133564ec351d2c743831af",
+  "gray_robot": "executor_robot",
+  "gray_start": [
+    1.2,
+    -14.0,
+    1.5707963267948966
+  ],
+  "fire_ids": [
+    "fire_01",
+    "fire_02",
+    "fire_03",
+    "fire_04",
+    "fire_05",
+    "fire_06"
+  ],
+  "balls": [
+    "step3_fire_01_ball",
+    "step3_fire_02_ball",
+    "step3_fire_03_ball",
+    "step3_fire_04_ball",
+    "step3_fire_05_ball",
+    "step3_fire_06_ball"
+  ],
+  "start_order": [
+    "writer_returned_outside",
+    "gray_robot_enters"
+  ],
+  "beacons_preserved": true
+}

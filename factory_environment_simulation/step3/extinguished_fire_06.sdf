@@ -1,0 +1,59 @@
+<sdf version="1.9"><model name="fire_06">
+      <static>true</static>
+      <pose>11 -2.2 0 0 0 0</pose>
+      <link name="body">
+        <visual name="scorch_visual">
+          <pose>0 0 0.003 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>1.1 1.1 0.004</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>.045 .035 .025 1</ambient>
+            <diffuse>.045 .035 .025 1</diffuse>
+          </material>
+        </visual>
+        <visual name="charred_crate0_visual">
+          <pose>-0.35 -0.25 0.2 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.45 0.4</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>.16 .095 .045 1</ambient>
+            <diffuse>.16 .095 .045 1</diffuse>
+          </material>
+        </visual>
+        <collision name="charred_crate0_collision">
+          <pose>-0.35 -0.25 0.2 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.45 0.4</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="charred_crate1_visual">
+          <pose>0.32 0.25 0.2 0 0 0.8</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.45 0.4</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>.16 .095 .045 1</ambient>
+            <diffuse>.16 .095 .045 1</diffuse>
+          </material>
+        </visual>
+        <collision name="charred_crate1_collision">
+          <pose>0.32 0.25 0.2 0 0 0.8</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.45 0.4</size>
+            </box>
+          </geometry>
+        </collision>
+        </link>
+    <plugin filename="gz-sim-pose-publisher-system" name="gz::sim::systems::PosePublisher"><publish_link_pose>false</publish_link_pose><publish_visual_pose>false</publish_visual_pose><publish_collision_pose>false</publish_collision_pose><publish_sensor_pose>false</publish_sensor_pose><publish_model_pose>true</publish_model_pose><publish_nested_model_pose>true</publish_nested_model_pose><static_publisher>false</static_publisher><use_pose_vector_msg>true</use_pose_vector_msg><update_frequency>10</update_frequency><topic>/model/fire_06/pose</topic></plugin></model>
+    </sdf>

@@ -1,0 +1,742 @@
+{
+  "world_sha256": "b995cc8f48292b7fe712de4f1f67b5a450eb9d39e82de0f6ff843dee79a03485",
+  "config_sha256": "f4ae92f1d94a44d9c22fbfe176840db4565f42674eeee0d2108251ccccc81ae0",
+  "distance_metres": 348.33,
+  "aisle_segments": [
+    {
+      "name": "vertical 0 / section 9",
+      "start": [
+        3.552713678800501e-15,
+        -11.399999999999999
+      ],
+      "end": [
+        3.552713678800501e-15,
+        11.200000000000003
+      ],
+      "samples": 114
+    },
+    {
+      "name": "vertical -10.5 / section 8",
+      "start": [
+        -10.599999999999998,
+        11.200000000000003
+      ],
+      "end": [
+        -10.599999999999998,
+        4.200000000000003
+      ],
+      "samples": 36
+    },
+    {
+      "name": "horizontal 7 / section 5",
+      "start": [
+        -15.2,
+        7.0000000000000036
+      ],
+      "end": [
+        15.2,
+        7.0000000000000036
+      ],
+      "samples": 153
+    },
+    {
+      "name": "vertical 10.5 / section 12",
+      "start": [
+        10.600000000000001,
+        4.200000000000003
+      ],
+      "end": [
+        10.600000000000001,
+        11.200000000000003
+      ],
+      "samples": 36
+    },
+    {
+      "name": "horizontal 11 / section 6",
+      "start": [
+        16.8,
+        11.000000000000004
+      ],
+      "end": [
+        -16.799999999999997,
+        11.000000000000004
+      ],
+      "samples": 169
+    },
+    {
+      "name": "horizontal 0 / section 3",
+      "start": [
+        -2.799999999999997,
+        0.0
+      ],
+      "end": [
+        2.8000000000000007,
+        0.0
+      ],
+      "samples": 29
+    },
+    {
+      "name": "horizontal 0 / section 4",
+      "start": [
+        9.8,
+        0.0
+      ],
+      "end": [
+        15.2,
+        0.0
+      ],
+      "samples": 28
+    },
+    {
+      "name": "vertical 18 / section 14",
+      "start": [
+        18.000000000000004,
+        -1.9999999999999982
+      ],
+      "end": [
+        18.000000000000004,
+        -1.3999999999999986
+      ],
+      "samples": 4
+    },
+    {
+      "name": "vertical 18 / section 13",
+      "start": [
+        18.000000000000004,
+        -4.399999999999999
+      ],
+      "end": [
+        18.000000000000004,
+        -4.999999999999998
+      ],
+      "samples": 4
+    },
+    {
+      "name": "vertical 10.5 / section 11",
+      "start": [
+        10.600000000000001,
+        -0.1999999999999993
+      ],
+      "end": [
+        10.600000000000001,
+        0.6000000000000014
+      ],
+      "samples": 5
+    },
+    {
+      "name": "vertical 18 / section 15",
+      "start": [
+        18.000000000000004,
+        4.400000000000002
+      ],
+      "end": [
+        18.000000000000004,
+        5.400000000000002
+      ],
+      "samples": 6
+    },
+    {
+      "name": "vertical 10.5 / section 10",
+      "start": [
+        10.600000000000001,
+        -3.9999999999999982
+      ],
+      "end": [
+        10.600000000000001,
+        -11.2
+      ],
+      "samples": 37
+    },
+    {
+      "name": "horizontal -11 / section 1",
+      "start": [
+        16.8,
+        -11.0
+      ],
+      "end": [
+        -16.799999999999997,
+        -11.0
+      ],
+      "samples": 169
+    },
+    {
+      "name": "vertical -10.5 / section 7",
+      "start": [
+        -10.599999999999998,
+        -11.2
+      ],
+      "end": [
+        -10.599999999999998,
+        -4.399999999999999
+      ],
+      "samples": 35
+    },
+    {
+      "name": "horizontal -7 / section 2",
+      "start": [
+        -15.0,
+        -6.999999999999998
+      ],
+      "end": [
+        15.2,
+        -6.999999999999998
+      ],
+      "samples": 152
+    }
+  ],
+  "reachable_cells": 9738,
+  "waypoints": [
+    {
+      "x": 3.552713678800501e-15,
+      "y": -14.0,
+      "name": "Start outside",
+      "kind": "start"
+    },
+    {
+      "x": 0.0,
+      "y": -11.4,
+      "name": "Connect to vertical 0 / section 9",
+      "kind": "connection"
+    },
+    {
+      "x": 0.0,
+      "y": 11.2,
+      "name": "vertical 0 / section 9",
+      "kind": "aisle"
+    },
+    {
+      "x": -10.6,
+      "y": 11.2,
+      "name": "Connect to vertical -10.5 / section 8",
+      "kind": "connection"
+    },
+    {
+      "x": -10.6,
+      "y": 4.2,
+      "name": "vertical -10.5 / section 8",
+      "kind": "aisle"
+    },
+    {
+      "x": -11.2,
+      "y": 6.2,
+      "name": "Connect to horizontal 7 / section 5",
+      "kind": "connection"
+    },
+    {
+      "x": -11.6,
+      "y": 6.6,
+      "name": "Connect to horizontal 7 / section 5",
+      "kind": "connection"
+    },
+    {
+      "x": -15.2,
+      "y": 7.0,
+      "name": "Connect to horizontal 7 / section 5",
+      "kind": "connection"
+    },
+    {
+      "x": 15.2,
+      "y": 7.0,
+      "name": "horizontal 7 / section 5",
+      "kind": "aisle"
+    },
+    {
+      "x": 11.6,
+      "y": 6.6,
+      "name": "Connect to vertical 10.5 / section 12",
+      "kind": "connection"
+    },
+    {
+      "x": 11.2,
+      "y": 6.2,
+      "name": "Connect to vertical 10.5 / section 12",
+      "kind": "connection"
+    },
+    {
+      "x": 10.6,
+      "y": 4.2,
+      "name": "Connect to vertical 10.5 / section 12",
+      "kind": "connection"
+    },
+    {
+      "x": 10.6,
+      "y": 11.2,
+      "name": "vertical 10.5 / section 12",
+      "kind": "aisle"
+    },
+    {
+      "x": 16.8,
+      "y": 11.0,
+      "name": "Connect to horizontal 11 / section 6",
+      "kind": "connection"
+    },
+    {
+      "x": -16.8,
+      "y": 11.0,
+      "name": "horizontal 11 / section 6",
+      "kind": "aisle"
+    },
+    {
+      "x": -11.6,
+      "y": 10.6,
+      "name": "Connect to horizontal 0 / section 3",
+      "kind": "connection"
+    },
+    {
+      "x": -9.8,
+      "y": 8.2,
+      "name": "Connect to horizontal 0 / section 3",
+      "kind": "connection"
+    },
+    {
+      "x": -9.8,
+      "y": 7.8,
+      "name": "Connect to horizontal 0 / section 3",
+      "kind": "connection"
+    },
+    {
+      "x": -8.2,
+      "y": 6.6,
+      "name": "Connect to horizontal 0 / section 3",
+      "kind": "connection"
+    },
+    {
+      "x": -4.6,
+      "y": 6.6,
+      "name": "Connect to horizontal 0 / section 3",
+      "kind": "connection"
+    },
+    {
+      "x": -4.2,
+      "y": 6.2,
+      "name": "Connect to horizontal 0 / section 3",
+      "kind": "connection"
+    },
+    {
+      "x": -2.8,
+      "y": 1.2,
+      "name": "Connect to horizontal 0 / section 3",
+      "kind": "connection"
+    },
+    {
+      "x": -2.8,
+      "y": 0.0,
+      "name": "Connect to horizontal 0 / section 3",
+      "kind": "connection"
+    },
+    {
+      "x": 2.8,
+      "y": 0.0,
+      "name": "horizontal 0 / section 3",
+      "kind": "aisle"
+    },
+    {
+      "x": 2.8,
+      "y": -1.4,
+      "name": "Connect to horizontal 0 / section 4",
+      "kind": "connection"
+    },
+    {
+      "x": 3.2,
+      "y": -2.0,
+      "name": "Connect to horizontal 0 / section 4",
+      "kind": "connection"
+    },
+    {
+      "x": 3.8,
+      "y": -2.2,
+      "name": "Connect to horizontal 0 / section 4",
+      "kind": "connection"
+    },
+    {
+      "x": 6.4,
+      "y": -2.2,
+      "name": "Connect to horizontal 0 / section 4",
+      "kind": "connection"
+    },
+    {
+      "x": 8.6,
+      "y": -1.6,
+      "name": "Connect to horizontal 0 / section 4",
+      "kind": "connection"
+    },
+    {
+      "x": 9.4,
+      "y": -1.0,
+      "name": "Connect to horizontal 0 / section 4",
+      "kind": "connection"
+    },
+    {
+      "x": 9.8,
+      "y": 0.0,
+      "name": "Connect to horizontal 0 / section 4",
+      "kind": "connection"
+    },
+    {
+      "x": 15.2,
+      "y": 0.0,
+      "name": "horizontal 0 / section 4",
+      "kind": "aisle"
+    },
+    {
+      "x": 15.2,
+      "y": -1.2,
+      "name": "Connect to vertical 18 / section 14",
+      "kind": "connection"
+    },
+    {
+      "x": 16.0,
+      "y": -1.6,
+      "name": "Connect to vertical 18 / section 14",
+      "kind": "connection"
+    },
+    {
+      "x": 18.0,
+      "y": -2.0,
+      "name": "Connect to vertical 18 / section 14",
+      "kind": "connection"
+    },
+    {
+      "x": 18.0,
+      "y": -1.4,
+      "name": "vertical 18 / section 14",
+      "kind": "aisle"
+    },
+    {
+      "x": 18.0,
+      "y": -1.6,
+      "name": "Connect to vertical 18 / section 13",
+      "kind": "connection"
+    },
+    {
+      "x": 16.8,
+      "y": -2.2,
+      "name": "Connect to vertical 18 / section 13",
+      "kind": "connection"
+    },
+    {
+      "x": 16.6,
+      "y": -2.8,
+      "name": "Connect to vertical 18 / section 13",
+      "kind": "connection"
+    },
+    {
+      "x": 16.6,
+      "y": -3.8,
+      "name": "Connect to vertical 18 / section 13",
+      "kind": "connection"
+    },
+    {
+      "x": 16.8,
+      "y": -3.8,
+      "name": "Connect to vertical 18 / section 13",
+      "kind": "connection"
+    },
+    {
+      "x": 16.8,
+      "y": -4.2,
+      "name": "Connect to vertical 18 / section 13",
+      "kind": "connection"
+    },
+    {
+      "x": 17.0,
+      "y": -4.4,
+      "name": "Connect to vertical 18 / section 13",
+      "kind": "connection"
+    },
+    {
+      "x": 18.0,
+      "y": -4.4,
+      "name": "Connect to vertical 18 / section 13",
+      "kind": "connection"
+    },
+    {
+      "x": 18.0,
+      "y": -5.0,
+      "name": "vertical 18 / section 13",
+      "kind": "aisle"
+    },
+    {
+      "x": 16.8,
+      "y": -4.2,
+      "name": "Connect to vertical 10.5 / section 11",
+      "kind": "connection"
+    },
+    {
+      "x": 16.8,
+      "y": -3.8,
+      "name": "Connect to vertical 10.5 / section 11",
+      "kind": "connection"
+    },
+    {
+      "x": 16.6,
+      "y": -3.8,
+      "name": "Connect to vertical 10.5 / section 11",
+      "kind": "connection"
+    },
+    {
+      "x": 16.6,
+      "y": -3.6,
+      "name": "Connect to vertical 10.5 / section 11",
+      "kind": "connection"
+    },
+    {
+      "x": 13.2,
+      "y": -1.0,
+      "name": "Connect to vertical 10.5 / section 11",
+      "kind": "connection"
+    },
+    {
+      "x": 12.2,
+      "y": -0.2,
+      "name": "Connect to vertical 10.5 / section 11",
+      "kind": "connection"
+    },
+    {
+      "x": 10.6,
+      "y": -0.2,
+      "name": "Connect to vertical 10.5 / section 11",
+      "kind": "connection"
+    },
+    {
+      "x": 10.6,
+      "y": 0.6,
+      "name": "vertical 10.5 / section 11",
+      "kind": "aisle"
+    },
+    {
+      "x": 10.6,
+      "y": 0.4,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 11.2,
+      "y": 0.2,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 12.0,
+      "y": 0.2,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 13.4,
+      "y": 1.0,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 16.6,
+      "y": 3.6,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 16.6,
+      "y": 3.8,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 16.8,
+      "y": 3.8,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 16.8,
+      "y": 4.2,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 17.0,
+      "y": 4.4,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 18.0,
+      "y": 4.4,
+      "name": "Connect to vertical 18 / section 15",
+      "kind": "connection"
+    },
+    {
+      "x": 18.0,
+      "y": 5.4,
+      "name": "vertical 18 / section 15",
+      "kind": "aisle"
+    },
+    {
+      "x": 18.0,
+      "y": 5.2,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 16.8,
+      "y": 4.2,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 16.8,
+      "y": 3.8,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 16.6,
+      "y": 3.8,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 16.6,
+      "y": 3.6,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 11.8,
+      "y": -0.2,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 10.4,
+      "y": -0.2,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 9.6,
+      "y": -0.8,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 8.0,
+      "y": -2.2,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 4.6,
+      "y": -3.4,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 4.2,
+      "y": -3.8,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 4.2,
+      "y": -6.2,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 4.6,
+      "y": -6.6,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 9.4,
+      "y": -6.6,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 9.8,
+      "y": -6.2,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 10.6,
+      "y": -4.0,
+      "name": "Connect to vertical 10.5 / section 10",
+      "kind": "connection"
+    },
+    {
+      "x": 10.6,
+      "y": -11.2,
+      "name": "vertical 10.5 / section 10",
+      "kind": "aisle"
+    },
+    {
+      "x": 16.8,
+      "y": -11.0,
+      "name": "Connect to horizontal -11 / section 1",
+      "kind": "connection"
+    },
+    {
+      "x": -16.8,
+      "y": -11.0,
+      "name": "horizontal -11 / section 1",
+      "kind": "aisle"
+    },
+    {
+      "x": -10.6,
+      "y": -11.2,
+      "name": "Connect to vertical -10.5 / section 7",
+      "kind": "connection"
+    },
+    {
+      "x": -10.6,
+      "y": -4.4,
+      "name": "vertical -10.5 / section 7",
+      "kind": "aisle"
+    },
+    {
+      "x": -11.2,
+      "y": -6.2,
+      "name": "Connect to horizontal -7 / section 2",
+      "kind": "connection"
+    },
+    {
+      "x": -11.6,
+      "y": -6.6,
+      "name": "Connect to horizontal -7 / section 2",
+      "kind": "connection"
+    },
+    {
+      "x": -15.0,
+      "y": -7.0,
+      "name": "Connect to horizontal -7 / section 2",
+      "kind": "connection"
+    },
+    {
+      "x": 15.2,
+      "y": -7.0,
+      "name": "horizontal -7 / section 2",
+      "kind": "aisle"
+    },
+    {
+      "x": 4.6,
+      "y": -7.4,
+      "name": "Return outside and stop",
+      "kind": "return"
+    },
+    {
+      "x": 0.8,
+      "y": -12.2,
+      "name": "Return outside and stop",
+      "kind": "return"
+    },
+    {
+      "x": 0.0,
+      "y": -14.0,
+      "name": "Return outside and stop",
+      "kind": "return"
+    }
+  ]
+}

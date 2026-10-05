@@ -1,0 +1,31 @@
+{
+  "fire_detection_metres": 1.0,
+  "victim_detection_metres": 0.3,
+  "communication_range_metres": 10.0,
+  "drop_pause_seconds": 1.0,
+  "beacon_size_metres": [
+    0.1,
+    0.1,
+    0.03
+  ],
+  "entrance_robot_stop": [
+    0.0,
+    -11.0
+  ],
+  "entrance_beacon_position": [
+    -0.45,
+    -11.0,
+    0.02
+  ],
+  "outside_gateway_position": [
+    -1.25,
+    -13.15,
+    0.225
+  ],
+  "range_beacon_capacity": 32,
+  "motion_seconds": 90.0,
+  "grid_resolution": 0.1,
+  "victim_extra_margin": -0.07,
+  "pose_max_age": 0.5,
+  "notes": "The blue entrance beacon and cable are fixed objects visible at startup, 1 m inside the doorway. The robot pauses there for 1 second to activate the wired uplink. Other beacons are created at their event drops. Yellow relays are only needed when the robot is more than 10 m from every confirmed interior beacon of any color; the wider spacing reduces yellow tiles in areas already covered by blue, orange, white or yellow tiles. Known-position proximity detection; 2D edge distances; interior beacons relay logical messages over 10 m radio links to the blue entrance beacon and through its cable to the outside gateway. The outside gateway gives no direct interior radio coverage. The smaller victim-only planning margin permits the requested close approach. No camera recognition or RF propagation."
+}
