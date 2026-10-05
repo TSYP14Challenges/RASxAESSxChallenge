@@ -1,0 +1,10 @@
+[package]
+name = "roidome-tui"
+version = "0.2.0-livingmap"
+edition = "2021"
+description = "Fork of RoidOME's roidome_tui: live ESP-NOW mesh monitor fed by the Living Map ESP8266 bridge over serial"
+
+[dependencies]
+ratatui = "0.29"
+crossterm = "0.28"
+serialport = { version = "4", default-features = false }
